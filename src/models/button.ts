@@ -1,0 +1,82 @@
+import type React from "react";
+import { tv, type VariantProps } from "tailwind-variants";
+import type Icon from "@/components/Icon";
+
+export const buttonVariants = tv({
+    base: "flex items-center justify-center cursor-pointer transition rounded group gap-1",
+  variants: {
+    variant: {
+      primary: "bg-accent-brand hover:bg-accent-brand-light",
+      secondary: "bg-background-secondary hover:bg-background-tertiary",
+      destructive: "bg-background-secondary hover:bg-background-tertiary",
+      ghost: `bg-transparent border border-solid border-border-primary text-accent-paragraph hover:border-background-secondary`,
+    },
+    size: {
+      sm: "h-7 py-1 px-3",
+      md: "h-10 py-2 pl-3 pr-3",
+    },
+    disabled: {
+      true: "opacity-50 pointer-events-none",
+    },
+    handling: {
+      true: "pointer-events-none",
+    },
+  },
+  defaultVariants: {
+    variant: "primary",
+    size: "sm",
+    disabled: false,
+    handling: false,
+  },
+});
+
+export const textButtonVariants = tv({
+  variants: {
+    variant: {
+      primary: "text-label-inverse",
+      secondary: "text-label",
+      destructive: "text-accent-red",
+      ghost: "text-accent-paragraph",
+    },
+    size: {
+      sm: "text-sm",
+      md: "text-base",
+    },
+  },
+  defaultVariants: {
+    variant: "primary",
+    size: "sm",
+  },
+});
+
+export const buttonIconVariants = tv({
+  variants: {
+    variant: {
+      primary: "fill-label-inverse",
+      secondary: "fill-label",
+      destructive: "fill-accent-red",
+      ghost: "fill-accent-paragraph",
+    },
+    size: {
+      sm: "w-4 h-4",
+      md: "w-6 h-6",
+    },
+
+    handling: {
+      true: "w-4 h-4",
+    },
+  },
+  defaultVariants: {
+    variant: "primary",
+    size: "sm",
+    handling: false,
+  },
+});
+
+export interface ButtonInterface
+  extends
+    Omit<React.ComponentProps<"button">, "size" | "disabled">,
+    VariantProps<typeof buttonVariants> {
+  icon?: React.ComponentProps<typeof Icon>["svg"];
+  handling?: boolean;
+}
