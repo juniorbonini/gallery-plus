@@ -1,77 +1,92 @@
-<<<<<<< HEAD
-# gallery-plus
-=======
-# React + TypeScript + Vite
+# 📸 Gallery App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação web para gerenciamento de imagens com sistema de álbuns, permitindo o relacionamento muitos-para-muitos entre fotos e álbuns.
 
-Currently, two official plugins are available:
+O projeto foi desenvolvido com foco em **arquitetura front-end, organização de domínio, validações robustas e experiência do usuário**, sendo construído em paralelo às aulas como forma de aprofundar o entendimento técnico.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Funcionalidades
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+### 📷 Upload de imagens
 
-## Expanding the ESLint configuration
+* Upload de novas fotos através de modal personalizado
+* Título opcional da imagem
+* Seleção obrigatória de pelo menos um álbum
+* Possibilidade de cancelar o upload
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 🖼️ Detalhes da imagem
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+* Visualização das informações da foto
+* Exibição dos álbuns aos quais a imagem pertence
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 🗂️ Gerenciamento de álbuns
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* Criação de novos álbuns via modal
+* Título do álbum obrigatório
+* Seleção de imagens no momento da criação
+* Estado vazio quando não há fotos disponíveis
+
+### 🔗 Relacionamento N:N
+
+* Uma foto pode pertencer a múltiplos álbuns
+* Um álbum pode conter múltiplas fotos
+
+---
+
+## 🧠 Conceitos aplicados
+
+* Atomic Design
+* Design Tokens
+* Separação de domínio
+* Relacionamento muitos-para-muitos
+* Validação de dados com Zod
+* Hooks customizados
+* Integração Front-end ↔ Back-end
+* Componentização e reutilização
+* Estados vazios e UX feedback
+
+---
+
+## 🧱 Tecnologias
+
+* React
+* TypeScript
+* Vite
+* Zod
+* CSS Modules / Styled Components (ou o que você usar)
+* API REST (backend fornecido no curso)
+
+---
+
+## 📁 Estrutura do projeto
+
+```
+Em andamento...
+
+---
+
+## ▶️ Como executar o projeto
+
+```bash
+# instalar dependências
+yarn
+
+# rodar o projeto
+yarn dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📌 Observações
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
->>>>>>> 1fa757c (chore: Estrutura inicial do projeto.)
+Este projeto foi desenvolvido com o objetivo de aprofundar conceitos de arquitetura front-end, indo além da simples implementação visual, priorizando organização, legibilidade e escalabilidade do código.
+
+---
+
+## 👨‍💻 Autor
+
+**Junior Bonini**
+Front-end Developer
+
+---
