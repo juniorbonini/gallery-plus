@@ -1,5 +1,6 @@
 import React from "react";
-import { textVariants, type TextInterface } from "../../models/text";
+
+import { textVariants, type TextInterface } from "@/models/text";
 
 export default function Text({
   as = "span",

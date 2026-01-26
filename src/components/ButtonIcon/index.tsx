@@ -7,7 +7,7 @@ import {
 // @ts-expect-error: module declaration for SVG React import
 import SpinnerIcon from "@/assets/icons/spinner.svg?react";
 
-import Icon from "../Icon";
+import Icon from "@/components/Icon";
 
 export default function ButtonIcon({
   variant,

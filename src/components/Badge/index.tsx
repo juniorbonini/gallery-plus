@@ -6,8 +6,8 @@ import {
   badgeVariants,
   type BadgeInterface,
 } from "@/models/badge";
-import Skeleton from "../Skeleton";
-import Text from "../Text";
+import Skeleton from "@/components/Skeleton";
+import Text from "@/components/Text";
 
 export default function Badge({
   variant,

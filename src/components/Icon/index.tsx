@@ -1,4 +1,4 @@
-import { iconVariants, type IconInterface } from "../../models/icon";
+import { iconVariants, type IconInterface } from "@/models/icon";
 
 export default function Icon({
   svg: SvgComponent,

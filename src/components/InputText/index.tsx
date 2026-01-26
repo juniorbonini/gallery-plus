@@ -1,12 +1,12 @@
-import Icon from "../Icon";
-import Text from "../Text";
+import Icon from "@/components/Icon";
+import Text from "@/components/Text";
 import {
   inputTextContainerVariants,
   inputTextIconVariants,
   inputTextVariants,
   inputTextWrapperVariants,
   type InputTextInterface,
-} from "../../models/input-text";
+} from "@/models/input-text";
 
 export default function InputText({
   size,

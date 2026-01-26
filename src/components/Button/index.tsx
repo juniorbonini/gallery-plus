@@ -1,16 +1,16 @@
 import cx from "classnames";
 
 // @ts-expect-error: module declaration for SVG React import
-import SpinnerIcon from "../../assets/icons/spinner.svg?react"
+import SpinnerIcon from "@/assets/icons/spinner.svg?react"
 
-import Text from "../Text";
-import Icon from "../Icon";
+import Text from "@/components/Text";
+import Icon from "@/components/Icon";
 import {
   buttonIconVariants,
   buttonVariants,
   textButtonVariants,
   type ButtonInterface,
-} from "../../models/button";
+} from "@/models/button";
 
 export default function Button({
   variant,
