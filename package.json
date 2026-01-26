@@ -5,7 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "yarn build-server && vite build",
+    "build-server": "tsc --noEmit -p tsconfig.server.json && tsup",
+    "dev-server": "tsup --watch --onSuccess \"node server/dist/main.js\"",
+    "run-server": "node server/dist/main.ts",
     "lint": "eslint .",
     "preview": "vite preview"
   },
