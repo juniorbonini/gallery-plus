@@ -1,7 +1,11 @@
+import Text from "./components/Text";
+
 function App() {
   return (
     <>
-      <h1 className="font-bold leading-6 text-gray-600">Gallery Plus</h1>
+      <Text className="text-accent-brand" variant="paragraph-large">
+        Gallery Plus
+      </Text>
     </>
   );
 }
