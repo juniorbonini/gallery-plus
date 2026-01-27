@@ -21,6 +21,7 @@ export default function Button({
   handling,
   icon,
   type = "button",
+  ...props
 }: ButtonInterface) {
   return (
     <button
@@ -38,6 +39,7 @@ export default function Button({
         ),
       })}
       disabled={disabled as boolean}
+      {...props}
     >
       <Text
         variant="label-medium"

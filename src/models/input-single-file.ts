@@ -30,4 +30,8 @@ export interface InputSingleFileInterface
     Omit<React.ComponentProps<"input">, "size">,
     VariantProps<typeof inputSingleFileVariants> {
         error?: React.ReactNode;
+        form: any;
+        allowedExtensions: string[];
+        maxFileInMb: number;
+        replaceBy: React.ReactNode;
     }

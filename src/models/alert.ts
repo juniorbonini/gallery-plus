@@ -5,7 +5,7 @@ export const alertVariants = tv({
   base: "rounded-md py-3 px-5",
   variants: {
     variant: {
-      info: "bg-accent-brand",
+      info: "bg-accent-brand/10",
     },
   },
   defaultVariants: {
