@@ -2,6 +2,7 @@ import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 
 export const dividerVariants = tv({
+    base: "w-full h-px",
     variants: {
         variant: {
             default: "bg-border-primary",
