@@ -16,3 +16,7 @@ export interface AlbumListSelector {
   albums: Album[];
   photo: Photo;
 }
+
+export interface NewAlbumDialog {
+  trigger: React.ReactNode;
+}

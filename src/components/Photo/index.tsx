@@ -6,8 +6,10 @@ import Skeleton from "@/components/Skeleton";
 import type { PhotoWidget } from "@/models/photo";
 import ImageFilePreview from "@/components/ImageFilePreview";
 import { buttonVariants, textButtonVariants } from "@/models/button";
+import { AlbumCategory } from "@/utils/album";
 
 export default function PhotoWidget({ photo, loading }: PhotoWidget) {
+  const albums = AlbumCategory;
   return (
     <div className="flex flex-col gap-4">
       {!loading ? (
@@ -33,7 +35,7 @@ export default function PhotoWidget({ photo, loading }: PhotoWidget) {
         <div className="flex gap-1 min-h-[1.375rem]">
           {!loading ? (
             <>
-              {photo.albums.slice(0, 1).map((album) => (
+              {albums.slice(0, 2).map((album) => (
                 <Badge
                   variant="ghost"
                   className="truncate"
@@ -43,9 +45,9 @@ export default function PhotoWidget({ photo, loading }: PhotoWidget) {
                   {album.title}
                 </Badge>
               ))}
-              {photo.albums.length > 1 && (
+              {albums.length > 2 && (
                 <Badge variant="ghost" size="xs">
-                  +{photo.albums.length - 1}
+                  +{albums.length - 1}
                 </Badge>
               )}
             </>

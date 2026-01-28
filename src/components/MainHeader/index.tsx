@@ -10,6 +10,7 @@ import type { MainHeaderInterface } from "@/models/main-header";
 import Divider from "@/components/Divider";
 import NewPhotoDialog from "@/components/Photo/new-photo.dialog";
 import Search from "@/components/Search";
+import NewAlbumDialog from "@/components/Album/new-album-dialog";
 
 export default function MainHeader({
   className,
@@ -30,7 +31,7 @@ export default function MainHeader({
 
       <div className="flex items-center gap-3">
       <NewPhotoDialog trigger={<Button>Nova foto</Button>} />
-        <Button variant="secondary">Criar album</Button>
+        <NewAlbumDialog trigger={<Button variant="secondary">Criar album</Button>} />
       </div>
     </Container>
   );

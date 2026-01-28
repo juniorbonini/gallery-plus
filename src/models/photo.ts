@@ -1,5 +1,23 @@
 import React from "react";
 import type { Album } from "./album";
+import { tv } from "tailwind-variants";
+import type ImageFilePreview from "@/components/ImageFilePreview";
+
+export const photoImageSelectVariants = tv({
+  base: "cursor-pointer relative rounded-lg",
+  variants: {
+    select: {
+      true: "outline-2 outline-accent-brand",
+    },
+  },
+});
+
+export interface PhotoImageSelect extends React.ComponentProps<
+  typeof ImageFilePreview
+> {
+  selected?: boolean;
+  onSelectImage?: (selected: boolean) => void;
+}
 
 export interface Photo {
   id: string;
@@ -9,8 +27,8 @@ export interface Photo {
 }
 
 export interface PhotoWidget {
-    photo: Photo;
-    loading?: boolean;
+  photo: Photo;
+  loading?: boolean;
 }
 
 export interface PhotosNavigator extends React.ComponentProps<"div"> {

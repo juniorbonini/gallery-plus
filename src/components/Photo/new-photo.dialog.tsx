@@ -74,8 +74,9 @@ export default function NewPhotoDialog({ trigger }: NewPhotoDialog) {
 
         <DialogFooter>
           <DialogClose asChild>
-            <Button>Cancelar</Button>
+            <Button variant="secondary">Cancelar</Button>
           </DialogClose>
+            <Button>Adicionar</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

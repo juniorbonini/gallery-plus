@@ -1,22 +1,19 @@
 import Album from "@/components/Album";
 import Container from "@/components/Container";
 import List from "@/components/List";
+import { AlbumCategory } from "@/utils/album";
 
 export default function Home() {
   return (
     <Container>
       <Album
-        albums={[
-          { id: "1", title: "Album 1" },
-          { id: "2", title: "Album 2" },
-          { id: "3", title: "Album 3" },
-        ]}
+        albums={AlbumCategory}
       />
       <List
         photos={[
           {
             id: "1",
-            title: "Olá munsdo",
+            title: "Olá mundo",
             imageId: "portrait-tower.png",
             albums: [
               { id: "1", title: "Album 1" },

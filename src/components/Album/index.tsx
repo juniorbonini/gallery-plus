@@ -14,11 +14,11 @@ export default function Album({
   const album = AlbumCategory;
   return (
     <div className={cx("flex items-center gap-3.5 overflow-x-auto")} {...props}>
-      <Text variant="heading-small">Albúns</Text>
+      <Text variant="heading-small">Álbuns</Text>
       <div className="flex gap-3">
         {!loading ? (
           <>
-            <Button size="sm" className="cursor-pointer" variant="primary">
+            <Button size="sm" className="cursor-pointer" variant="ghost">
               Todos
             </Button>
             {album.map((album) => (
