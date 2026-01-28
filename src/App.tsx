@@ -12,7 +12,7 @@ export default function App() {
         <Route element={<LayoutMain />}>
           <Route index element={<Home />} />
           <Route path="/components" element={<PageComponents />} />
-          <Route path="/foto/:id" element={<PagePhoto />} />
+          <Route path="/fotos/:id" element={<PagePhoto />} />
         </Route>
       </Routes>
     </BrowserRouter>
