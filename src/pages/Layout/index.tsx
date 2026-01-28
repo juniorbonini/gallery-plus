@@ -1,3 +1,4 @@
+import Content from "@/components/Content";
 import MainHeader from "@/components/MainHeader";
 import Text from "@/components/Text";
 import { Outlet } from "react-router";
@@ -8,7 +9,9 @@ export default function LayoutMain() {
       <Text variant="heading-large">Layout main</Text>
       <hr />
       <MainHeader />
-      <Outlet />
+     <Content>
+       <Outlet />
+     </Content>
     </>
   );
 }

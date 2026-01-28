@@ -2,6 +2,7 @@ import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 
 export const textVariants = tv({
+  base: "font-sans, text-accent-paragraph",
   variants: {
     variant: {
       "heading-large": "text-2xl leading-[130%] font-bold",
