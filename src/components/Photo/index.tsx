@@ -14,10 +14,10 @@ export default function PhotoWidget({ photo, loading }: PhotoWidget) {
         <ImageFilePreview
           src={`/images/${photo.imageId}`}
           title={photo.title}
-          imageClassName="w-[13.5625rem] h-[13.5625rem] rounded-lg"
+          imageClassName="w-[10.875rem] h-[10.875rem] rounded-lg"
         />
       ) : (
-        <Skeleton className="w-[13.5625rem] h-[13.5625rem] rounded-lg" />
+        <Skeleton className="w-[10.875rem] h-[10.875rem] rounded-lg" />
       )}
       <div className="flex flex-col gap-2">
         {!loading ? (
@@ -33,7 +33,7 @@ export default function PhotoWidget({ photo, loading }: PhotoWidget) {
         <div className="flex gap-1 min-h-[1.375rem]">
           {!loading ? (
             <>
-              {photo.albums.slice(0, 2).map((album) => (
+              {photo.albums.slice(0, 1).map((album) => (
                 <Badge
                   variant="ghost"
                   className="truncate"
@@ -43,7 +43,7 @@ export default function PhotoWidget({ photo, loading }: PhotoWidget) {
                   {album.title}
                 </Badge>
               ))}
-              {photo.albums.length > 2 && (
+              {photo.albums.length > 1 && (
                 <Badge variant="ghost" size="xs">
                   +{photo.albums.length - 1}
                 </Badge>
@@ -64,7 +64,7 @@ export default function PhotoWidget({ photo, loading }: PhotoWidget) {
           to={`/foto/${photo.id}`}
           className={buttonVariants({
             variant: "secondary",
-            className: "px-2 py-2",
+            className: "px-2 py-2 w-[10.875rem]",
           })}
         >
           <Text
