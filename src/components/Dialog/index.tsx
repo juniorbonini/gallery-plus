@@ -15,6 +15,7 @@ export const DialogTrigger = DialogPrimivite.Trigger;
 
 export const DialogClose = DialogPrimivite.Close;
 
+
 export function DialogOverlay({
   className,
   ...props
