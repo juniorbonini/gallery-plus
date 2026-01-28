@@ -5,10 +5,11 @@ import { Link } from "react-router";
 import Logo from "@/assets/images/galeria-plus-full-logo.svg?react";
 
 import Container from "@/components/Container";
-import Button from "../Button";
+import Button from "@/components/Button";
 import type { MainHeaderInterface } from "@/models/main-header";
-import Divider from "../Divider";
-import Search from "../Search";
+import Divider from "@/components/Divider";
+import NewPhotoDialog from "@/components/Photo/new-photo.dialog";
+import Search from "@/components/Search";
 
 export default function MainHeader({
   className,
@@ -28,7 +29,7 @@ export default function MainHeader({
       <Divider orientation="vertical" className="h-10" />
 
       <div className="flex items-center gap-3">
-        <Button>Nova foto</Button>
+      <NewPhotoDialog trigger={<Button>Nova foto</Button>} />
         <Button variant="secondary">Criar album</Button>
       </div>
     </Container>
