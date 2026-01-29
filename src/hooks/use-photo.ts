@@ -2,6 +2,7 @@ import type { Photo, PhotoResponse } from "@/models/photo";
 import type { PhotoNewFormSchema } from "@/schemas/Photo/photo.schema";
 import { fetcher, api } from "@/utils/api";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
 
 
 
@@ -23,7 +24,7 @@ export function usePhoto(id?: string) {
       await api.post(
         `/photos/${photo.id}/image`,
         {
-          file: payload.file,
+          file: payload.file[0],
         },
         {
           headers: {
@@ -33,17 +34,20 @@ export function usePhoto(id?: string) {
       );
 
       if (payload.albumsIds && payload.albumsIds.length > 0) {
-        await api.post(`/photos/${photo.id}/albums`);
+        await api.post(`/photos/${photo.id}/albums`, {
+          albumsIds: payload.albumsIds,
+        });
       }
 
       queryClient.invalidateQueries({ queryKey: ["photos"] })
+      toast.success("Foto criada com sucesso")
     } catch (error) {
-      throw error;
+      toast.error("Erro ao criar a foto")
     }
   }
 
   return {
-    photo: data,
+    photos: data,
     isLoadingPhoto: isLoading,
     previousPhotoId: data?.previousPhotoId,
     nextPhotoId: data?.nextPhotoId,
