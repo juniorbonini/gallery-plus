@@ -13,22 +13,28 @@ import { useParams } from "react-router";
 export default function PagePhoto() {
   const { id } = useParams();
   const { albums } = useAlbums();
-  const { photo, isLoadingPhoto } = usePhoto(id);
+  const { photo, isLoadingPhoto, previousPhotoId, nextPhotoId } = usePhoto(id);
 
-  if(!isLoadingPhoto && !photo) {
-    return <div>Nenhuma foto encontrada</div>
+  if (!isLoadingPhoto && !photo) {
+    return <div>Nenhuma foto encontrada</div>;
   }
 
   return (
     <Container>
       <header className="flex items-center justify-between gap-8 mb-8">
         {!isLoadingPhoto ? (
-          <Text as="h2" variant="heading-large">{photo?.title}</Text>
+          <Text as="h2" variant="heading-large">
+            {photo?.title}
+          </Text>
         ) : (
           <Skeleton className="w-48 h-8" />
         )}
 
-        <PhotoNavigator />
+        <PhotoNavigator
+          previousPhotoId={previousPhotoId}
+          nextPhotoId={nextPhotoId}
+          loading={isLoadingPhoto}
+        />
       </header>
       <div className="grid grid-cols-[21rem_1fr] gap-24">
         <div className="space-y-3">
