@@ -4,13 +4,15 @@ import InputText from "../InputText";
 // @ts-expect-error: module declaration for SVG React import
 import SearchIcon from "@/assets/icons/search.svg?react";
 import { debounce } from "@/utils/utils";
+import { usePhotos } from "@/hooks/use-photos";
 
 export default function Search() {
   const [inputValue, setValue] = React.useState("");
+  const {filters} = usePhotos();
 
   const debouncedValue = React.useCallback(
-    debounce((value: string) => console.log("Valor com debounce", value), 1000),
-    [],
+    debounce((value: string) => filters.setQ(value), 1000),
+    [filters.setQ],
   );
 
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {

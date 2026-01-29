@@ -1,5 +1,5 @@
 import cn from "classnames";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 
 // @ts-expect-error: module declaration for SVG React import
 import Logo from "@/assets/images/galeria-plus-full-logo.svg?react";
@@ -16,6 +16,7 @@ export default function MainHeader({
   className,
   ...props
 }: MainHeaderInterface) {
+  const { pathname } = useLocation();
   return (
     <Container
       as="header"
@@ -26,12 +27,18 @@ export default function MainHeader({
         <Logo className="h-5" />
       </Link>
 
-      <Search />
-      <Divider orientation="vertical" className="h-10" />
+      {pathname === "/" && (
+        <>
+          <Search />
+          <Divider orientation="vertical" className="h-10" />
+        </>
+      )}
 
       <div className="flex items-center gap-3">
-      <NewPhotoDialog trigger={<Button>Nova foto</Button>} />
-      <NewAlbumDialog trigger={<Button variant="secondary">Criar album</Button>} />
+        <NewPhotoDialog trigger={<Button>Nova foto</Button>} />
+        <NewAlbumDialog
+          trigger={<Button variant="secondary">Criar album</Button>}
+        />
       </div>
     </Container>
   );

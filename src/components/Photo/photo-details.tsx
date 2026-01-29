@@ -7,27 +7,12 @@ import { useAlbums } from "@/hooks/use-albums";
 import type { PhotoWidget } from "@/models/photo";
 import ImageFilePreview from "@/components/ImageFilePreview";
 import { buttonVariants, textButtonVariants } from "@/models/button";
-<<<<<<< HEAD
-import type { Album } from "@/models/album";
-// import { useAlbums } from "@/hooks/use-album";
-
-export default function PhotoWidget({ photo, loading }: PhotoWidget) {
-  //Apenas para dados mockados...
-  const albums:Album[] = [
-    {id: "1", title: "Natureza"},
-    {id: "2", title: "Viagem"},
-    {id: "3", title: "Fotografia"},
-    {id: "4", title: "Arquitetura"}
-  ] 
-  // const { albums } = useAlbums();
-=======
 
 export default function PhotoWidget({ photo, loading }: PhotoWidget) {
   const { albums, isLoadingAlbum } = useAlbums()
->>>>>>> b582362 (fix: corrige envio de imagem para API)
   return (
     <div className="flex flex-col gap-4">
-      {!loading ? (
+      {!isLoadingAlbum ? (
         <ImageFilePreview
           src={`${import.meta.env.VITE_IMAGES_URL}/${photo.imageId}`}
           title={photo.title}
@@ -37,7 +22,7 @@ export default function PhotoWidget({ photo, loading }: PhotoWidget) {
         <Skeleton className="w-[10.875rem] h-[10.875rem] rounded-lg" />
       )}
       <div className="flex flex-col gap-2">
-        {!loading ? (
+        {!isLoadingAlbum ? (
           <Text variant="paragraph-large" className="truncate">
             {photo.title}
           </Text>
@@ -45,7 +30,7 @@ export default function PhotoWidget({ photo, loading }: PhotoWidget) {
           <Skeleton className="w-full h-6" />
         )}
         <div className="flex gap-1 min-h-[1.375rem]">
-          {!loading ? (
+          {!isLoadingAlbum ? (
             <>
               {albums.slice(0, 2).map((album) => (
                 <Badge
@@ -73,7 +58,7 @@ export default function PhotoWidget({ photo, loading }: PhotoWidget) {
           )}
         </div>
       </div>
-      {!loading ? (
+      {!isLoadingAlbum ? (
         <Link
           to={`/fotos/${photo.id}`}
           className={buttonVariants({

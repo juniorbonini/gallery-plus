@@ -3,40 +3,35 @@ import type { Album, AlbumFilter } from "@/models/album";
 import Text from "../Text";
 import Button from "../Button";
 import Skeleton from "../Skeleton";
-<<<<<<< HEAD
-
-export default function AlbumFiltered({
-  albums,
-=======
 import { useAlbums } from "@/hooks/use-albums";
+import { usePhotos } from "@/hooks/use-photos";
 
 export default function AlbumFiltered({
->>>>>>> b582362 (fix: corrige envio de imagem para API)
   loading,
   className,
   ...props
 }: AlbumFilter) {
-<<<<<<< HEAD
-  //Apenas para dados mockados...
-  const album: Album[] = [
-    {id: "1", title: "Natureza"},
-    {id: "2", title: "Fotografia"},
-    {id: "3", title: "Viagem"}
-  ]
-=======
+  const { filters } = usePhotos();
   const { albums, isLoadingAlbum } = useAlbums();
->>>>>>> b582362 (fix: corrige envio de imagem para API)
   return (
     <div className={cx("flex items-center gap-3.5 overflow-x-auto")} {...props}>
       <Text variant="heading-small">Álbuns</Text>
       <div className="flex gap-3">
         {!isLoadingAlbum ? (
           <>
-            <Button size="sm">Todos</Button>
+            <Button
+              size="sm"
+              className="cursor-pointer"
+              variant={filters.albumId === null ? "primary" : "ghost"}
+              onClick={() => filters.setAlbumId(null)}
+            >
+              Todos
+            </Button>
             {albums.map((album) => (
               <Button
                 key={album.id}
-                variant="ghost"
+                variant={filters.albumId === album.id ? "primary" : "ghost"}
+                onClick={() => filters.setAlbumId(null)}
                 size="sm"
                 className="cursor-pointer"
               >

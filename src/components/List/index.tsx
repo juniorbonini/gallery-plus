@@ -1,7 +1,7 @@
 import type { List } from "@/models/list";
 import Text from "@/components/Text";
 import Skeleton from "@/components/Skeleton";
-import PhotoWidget from "@/components/Photo";
+import PhotoWidget from "@/components/Photo/photo-details";
 import type { Photo } from "@/models/photo";
 
 export default function List({photos, loading }: List) {
