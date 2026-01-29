@@ -16,6 +16,7 @@ import ImageFilePreview from "../ImageFilePreview";
 import Text from "../Text";
 import Button from "../Button";
 import Skeleton from "../Skeleton";
+<<<<<<< HEAD
 import { useAlbums } from "@/hooks/use-album";
  
 export default function NewPhotoDialog({ trigger }: NewPhotoDialog) {
@@ -30,6 +31,13 @@ export default function NewPhotoDialog({ trigger }: NewPhotoDialog) {
 
   const { isLoadingAlbums } = useAlbums();
 
+=======
+import { useAlbums } from "@/hooks/use-albums";
+ 
+export default function NewPhotoDialog({ trigger }: NewPhotoDialog) {
+  const form = useForm();
+  const { albums, isLoadingAlbum } = useAlbums();
+>>>>>>> b582362 (fix: corrige envio de imagem para API)
   return (
     <Dialog>
       <DialogTrigger asChild>{trigger}</DialogTrigger>

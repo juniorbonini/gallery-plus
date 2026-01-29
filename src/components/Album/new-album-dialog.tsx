@@ -8,6 +8,7 @@ import {
   DialogHeader,
 } from "@/components/Dialog";
 import { DialogClose, DialogTrigger } from "@radix-ui/react-dialog";
+<<<<<<< HEAD
 import InputText from "@/components/InputText";
 import Text from "@/components/Text";
 import Skeleton from "@/components/Skeleton";
@@ -55,6 +56,20 @@ export default function NewAlbumDialog({ trigger }: NewAlbumDialog) {
         ]
     },
   ];
+=======
+import InputText from "../InputText";
+import Text from "../Text";
+import Skeleton from "../Skeleton";
+import PhotoImageSelect from "@/components/Photo/photo-image-select"
+
+// @ts-expect-error: module declaration for SVG React import
+import SelectCheckboxIllustration from "@/assets/icons/upload-file.svg?react";
+import Button from "../Button";
+import { usePhotos } from "@/hooks/use-photos";
+
+export default function NewAlbumDialog({ trigger }: NewAlbumDialog) {
+  const { photos, isLoadingPhoto } = usePhotos();
+>>>>>>> b582362 (fix: corrige envio de imagem para API)
 
   function handleTogglePhoto(selected: boolean, photoId: string) {
     console.log(selected, photoId)
@@ -78,7 +93,7 @@ export default function NewAlbumDialog({ trigger }: NewAlbumDialog) {
                 {photos.map((photo) => (
                  <PhotoImageSelect
                   key={photo.id}
-                  src={`/images/${photo.imageId}`}
+                  src={`${import.meta.env.VITE_IMAGES_URL}/${photo.imageId}`}
                   title={photo.title}
                   imageClassName="w-20 h-20 rounded-lg"
                   onSelectImage={(selected) => 

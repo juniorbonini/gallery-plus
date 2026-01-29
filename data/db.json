@@ -1,5 +1,36 @@
 {
-  "photos": [],
-  "albums": [],
-  "photosOnAlbums": []
+  "photos": [
+    {
+      "id": "ea0ff5b6-3596-4e92-9c2e-bf5d438692c1",
+      "title": "Luna e Lua",
+      "albumsIds": [],
+      "imageId": "462b2278-d9a4-4d89-b9c0-7f7f88d363c3.png"
+    },
+    {
+      "id": "c4a57784-223e-4a8e-a145-f14e5950b17b",
+      "title": "Academia",
+      "albumsIds": [],
+      "imageId": "291aad26-a8d2-411c-84b7-9c819492f263.jpeg"
+    }
+  ],
+  "albums": [
+    {
+      "id": "61a82a91-4f69-43b5-999e-3a0227b09fd8",
+      "title": "Gatos"
+    },
+    {
+      "id": "0725a72b-04a4-40a8-8373-5e2add32ce98",
+      "title": "Aleatórios"
+    }
+  ],
+  "photosOnAlbums": [
+    {
+      "photoId": "ea0ff5b6-3596-4e92-9c2e-bf5d438692c1",
+      "albumId": "61a82a91-4f69-43b5-999e-3a0227b09fd8"
+    },
+    {
+      "photoId": "c4a57784-223e-4a8e-a145-f14e5950b17b",
+      "albumId": "61a82a91-4f69-43b5-999e-3a0227b09fd8"
+    }
+  ]
 }

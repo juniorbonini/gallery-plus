@@ -7,7 +7,6 @@ export default function LayoutMain() {
   return (
     <>
       <Text variant="heading-large">Layout main</Text>
-      <hr />
       <MainHeader />
      <Content>
        <Outlet />

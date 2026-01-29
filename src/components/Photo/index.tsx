@@ -3,9 +3,11 @@ import { Link } from "react-router";
 import Text from "@/components/Text";
 import Badge from "@/components/Badge";
 import Skeleton from "@/components/Skeleton";
+import { useAlbums } from "@/hooks/use-albums";
 import type { PhotoWidget } from "@/models/photo";
 import ImageFilePreview from "@/components/ImageFilePreview";
 import { buttonVariants, textButtonVariants } from "@/models/button";
+<<<<<<< HEAD
 import type { Album } from "@/models/album";
 // import { useAlbums } from "@/hooks/use-album";
 
@@ -18,11 +20,16 @@ export default function PhotoWidget({ photo, loading }: PhotoWidget) {
     {id: "4", title: "Arquitetura"}
   ] 
   // const { albums } = useAlbums();
+=======
+
+export default function PhotoWidget({ photo, loading }: PhotoWidget) {
+  const { albums, isLoadingAlbum } = useAlbums()
+>>>>>>> b582362 (fix: corrige envio de imagem para API)
   return (
     <div className="flex flex-col gap-4">
       {!loading ? (
         <ImageFilePreview
-          src={`/images/${photo.imageId}`}
+          src={`${import.meta.env.VITE_IMAGES_URL}/${photo.imageId}`}
           title={photo.title}
           imageClassName="w-[10.875rem] h-[10.875rem] rounded-lg"
         />
