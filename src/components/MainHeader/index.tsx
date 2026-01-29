@@ -31,7 +31,7 @@ export default function MainHeader({
 
       <div className="flex items-center gap-3">
       <NewPhotoDialog trigger={<Button>Nova foto</Button>} />
-        <NewAlbumDialog trigger={<Button variant="secondary">Criar album</Button>} />
+      <NewAlbumDialog trigger={<Button variant="secondary">Criar album</Button>} />
       </div>
     </Container>
   );
