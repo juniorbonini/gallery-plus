@@ -7,26 +7,23 @@ import Button from "@/components/Button";
 import AlbumListSelector from "@/components/Album/album-list-selector";
 import { useAlbums } from "@/hooks/use-albums";
 import type { Photo } from "@/models/photo";
+import { usePhoto } from "@/hooks/use-photo";
+import { useParams } from "react-router";
 
 export default function PagePhoto() {
+  const { id } = useParams();
   const { albums } = useAlbums();
- const isLoadingPhoto = false;
-  const photo = {
-    id: "123",
-    title: "Olá mundo!",
-    imageId: "portrait-tower.png",
-    albums: [
-      {id: "1", title: "Natureza"},
-      {id: "2", title: "Fotografia"},
-      {id: "3", title: "Viagem"},
-    ],
-  } as Photo;
+  const { photo, isLoadingPhoto } = usePhoto(id);
+
+  if(!isLoadingPhoto && !photo) {
+    return <div>Nenhuma foto encontrada</div>
+  }
 
   return (
     <Container>
       <header className="flex items-center justify-between gap-8 mb-8">
         {!isLoadingPhoto ? (
-          <Text as="h2" variant="heading-large">{photo.title}</Text>
+          <Text as="h2" variant="heading-large">{photo?.title}</Text>
         ) : (
           <Skeleton className="w-48 h-8" />
         )}
@@ -37,8 +34,9 @@ export default function PagePhoto() {
         <div className="space-y-3">
           {!isLoadingPhoto ? (
             <ImageFilePreview
-              src={`/images/${photo.imageId}`}
+              src={`${import.meta.env.VITE_IMAGES_URL}/${photo?.imageId}`}
               imageClassName="h-[21rem]"
+              title={photo?.title}
             />
           ) : (
             <Skeleton className="h-[21rem]" />
@@ -55,7 +53,7 @@ export default function PagePhoto() {
             Álbuns
           </Text>
           <AlbumListSelector
-            photo={photo}
+            photo={photo as Photo}
             albums={albums}
             loading={isLoadingPhoto}
           />

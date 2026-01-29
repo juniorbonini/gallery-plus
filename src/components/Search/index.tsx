@@ -11,7 +11,7 @@ export default function Search() {
   const {filters} = usePhotos();
 
   const debouncedValue = React.useCallback(
-    debounce((value: string) => filters.setQ(value), 1000),
+    debounce((value: string) => filters.setQ( value), 1000),
     [filters.setQ],
   );
 

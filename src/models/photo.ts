@@ -40,3 +40,8 @@ export interface PhotosNavigator extends React.ComponentProps<"div"> {
 export interface NewPhotoDialog {
   trigger: React.ReactNode;
 }
+
+export interface PhotoResponse extends Photo {
+  previousPhotoId?: string;
+  nextPhotoId?: string;
+}
