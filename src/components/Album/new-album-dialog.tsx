@@ -16,10 +16,11 @@ import PhotoImageSelect from "@/components/Photo/photo-image-select"
 // @ts-expect-error: module declaration for SVG React import
 import SelectCheckboxIllustration from "@/assets/images/select-checkbox.svg?react";
 import Button from "@/components/Button";
-import Divider from "../Divider";
 
 export default function NewAlbumDialog({ trigger }: NewAlbumDialog) {
   const isLoadingPhoto = false;
+
+  //Apenas para dados mockados...
   const photos: Photo[] = [
     {
         id: "1",
@@ -28,7 +29,31 @@ export default function NewAlbumDialog({ trigger }: NewAlbumDialog) {
         albums: [
             {id: "1", title: "Album 1"}
         ]
-    }
+    },
+    {
+        id: "1",
+        title: "Olá mundo",
+        imageId: "portrait-tower.png",
+        albums: [
+            {id: "1", title: "Album 1"}
+        ]
+    },
+    {
+        id: "1",
+        title: "Olá mundo",
+        imageId: "portrait-tower.png",
+        albums: [
+            {id: "1", title: "Album 1"}
+        ]
+    },
+    {
+        id: "1",
+        title: "Olá mundo",
+        imageId: "portrait-tower.png",
+        albums: [
+            {id: "1", title: "Album 1"}
+        ]
+    },
   ];
 
   function handleTogglePhoto(selected: boolean, photoId: string) {

@@ -16,13 +16,19 @@ import ImageFilePreview from "../ImageFilePreview";
 import Text from "../Text";
 import Button from "../Button";
 import Skeleton from "../Skeleton";
-import {AlbumCategory} from "@/utils/album";
+import { useAlbums } from "@/hooks/use-album";
  
 export default function NewPhotoDialog({ trigger }: NewPhotoDialog) {
   const form = useForm();
+  //Apenas para dados mockados...
+  const albums:Album[] = [
+    {id: "1", title: "Natureza"},
+    {id: "2", title: "Viagem"},
+    {id: "3", title: "Fotografia"},
+    {id: "4", title: "Arquitetura"}
+  ] 
 
-  const isLoadingAlbum = false;
-  const albums = AlbumCategory;
+  const { isLoadingAlbums } = useAlbums();
 
   return (
     <Dialog>
@@ -48,7 +54,7 @@ export default function NewPhotoDialog({ trigger }: NewPhotoDialog) {
             <Text variant="label-small">Selecionar álbums</Text>
 
             <div className="flex flex-wrap gap-3">
-              {!isLoadingAlbum &&
+              {!isLoadingAlbums &&
                 albums.length > 0 &&
                 albums.map((album) => (
                   <Button
@@ -61,7 +67,7 @@ export default function NewPhotoDialog({ trigger }: NewPhotoDialog) {
                   </Button>
                 ))}
 
-              {isLoadingAlbum &&
+              {isLoadingAlbums &&
                 Array.from({ length: 5 }).map((_, index) => (
                   <Skeleton
                     key={`album-loading-${index}`}

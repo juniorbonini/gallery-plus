@@ -1,17 +1,21 @@
 import cx from "classnames";
-import type { AlbumFilter } from "@/models/album";
+import type { Album, AlbumFilter } from "@/models/album";
 import Text from "../Text";
 import Button from "../Button";
 import Skeleton from "../Skeleton";
-import { AlbumCategory } from "@/utils/album";
 
-export default function Album({
+export default function AlbumFiltered({
   albums,
   loading,
   className,
   ...props
 }: AlbumFilter) {
-  const album = AlbumCategory;
+  //Apenas para dados mockados...
+  const album: Album[] = [
+    {id: "1", title: "Natureza"},
+    {id: "2", title: "Fotografia"},
+    {id: "3", title: "Viagem"}
+  ]
   return (
     <div className={cx("flex items-center gap-3.5 overflow-x-auto")} {...props}>
       <Text variant="heading-small">Álbuns</Text>

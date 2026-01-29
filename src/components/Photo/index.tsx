@@ -6,10 +6,18 @@ import Skeleton from "@/components/Skeleton";
 import type { PhotoWidget } from "@/models/photo";
 import ImageFilePreview from "@/components/ImageFilePreview";
 import { buttonVariants, textButtonVariants } from "@/models/button";
-import { AlbumCategory } from "@/utils/album";
+import type { Album } from "@/models/album";
+// import { useAlbums } from "@/hooks/use-album";
 
 export default function PhotoWidget({ photo, loading }: PhotoWidget) {
-  const albums = AlbumCategory;
+  //Apenas para dados mockados...
+  const albums:Album[] = [
+    {id: "1", title: "Natureza"},
+    {id: "2", title: "Viagem"},
+    {id: "3", title: "Fotografia"},
+    {id: "4", title: "Arquitetura"}
+  ] 
+  // const { albums } = useAlbums();
   return (
     <div className="flex flex-col gap-4">
       {!loading ? (
@@ -23,10 +31,7 @@ export default function PhotoWidget({ photo, loading }: PhotoWidget) {
       )}
       <div className="flex flex-col gap-2">
         {!loading ? (
-          <Text
-            variant="paragraph-large"
-            className="truncate"
-          >
+          <Text variant="paragraph-large" className="truncate">
             {photo.title}
           </Text>
         ) : (

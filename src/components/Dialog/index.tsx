@@ -8,13 +8,11 @@ import Text from "@/components/Text";
 // @ts-expect-error: module declaration for SVG React import
 import Xicon from "@/assets/icons/x.svg?react"
 
-
 export const Dialog = DialogPrimivite.Root;
 
 export const DialogTrigger = DialogPrimivite.Trigger;
 
 export const DialogClose = DialogPrimivite.Close;
-
 
 export function DialogOverlay({
   className,

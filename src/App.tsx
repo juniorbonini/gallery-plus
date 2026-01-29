@@ -1,12 +1,16 @@
 import { BrowserRouter, Routes, Route } from "react-router";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import Home from "@/pages/Home";
 import LayoutMain from "@/pages/Layout";
 import PagePhoto from "@/pages/Photo";
 import PageComponents from "@/pages/Components/page-components";
 
+const client = new QueryClient();
+
 export default function App() {
   return (
+    <QueryClientProvider client={client}>
     <BrowserRouter>
       <Routes>
         <Route element={<LayoutMain />}>
@@ -16,5 +20,6 @@ export default function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    </QueryClientProvider>
   );
 }

@@ -1,14 +1,22 @@
-import Album from "@/components/Album";
+import AlbumFiltered from "@/components/Album";
 import Container from "@/components/Container";
 import List from "@/components/List";
-import { AlbumCategory } from "@/utils/album";
+import { useAlbums } from "@/hooks/use-album";
+import type { Album } from "@/models/album";
 
 export default function Home() {
+  const { isLoadingAlbums } = useAlbums();
+
+  //Apenas para dados mockados...
+  const albums: Album[] = [
+    { id: "1", title: "Natureza" },
+    { id: "2", title: "Viagem" },
+    { id: "3", title: "Fotografia" },
+    { id: "4", title: "Arquitetura" },
+  ];
   return (
     <Container>
-      <Album
-        albums={AlbumCategory}
-      />
+      <AlbumFiltered albums={albums} loading={isLoadingAlbums} />
       <List
         photos={[
           {

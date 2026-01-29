@@ -6,16 +6,31 @@ import PhotoNavigator from "@/components/Photo/photo-navigator";
 import ImageFilePreview from "@/components/ImageFilePreview";
 import Button from "@/components/Button";
 import AlbumListSelector from "@/components/Album/album-list-selector";
-import { AlbumCategory } from "@/utils/album";
+import { useAlbums } from "@/hooks/use-album";
+import type { Album } from "@/models/album";
 
 export default function PagePhoto() {
+  const { isLoadingAlbums } = useAlbums();
   const isLoadingPhoto = false;
   const photo = {
     id: "1",
     title: "Olá mundo",
     imageId: "portrait-tower.png",
-    albums: AlbumCategory,
+    albums: [
+      {id: "1", title: "Natureza"},
+      {id: "2", title: "Fotografia"},
+      {id: "3", title: "Viagem"},
+    ],
   } as Photo;
+
+  //Apenas para dados mockados...
+  const albums:Album[] = [
+    {id: "1", title: "Natureza"},
+    {id: "2", title: "Viagem"},
+    {id: "3", title: "Fotografia"},
+    {id: "4", title: "Arquitetura"},
+
+  ] 
   return (
     <Container>
       <header className="flex items-center justify-between gap-8 mb-8">
@@ -50,8 +65,8 @@ export default function PagePhoto() {
           </Text>
           <AlbumListSelector
             photo={photo}
-            albums={AlbumCategory}
-            loading={isLoadingPhoto}
+            albums={albums}
+            loading={isLoadingAlbums}
           />
         </div>
       </div>
