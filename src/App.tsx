@@ -6,6 +6,8 @@ import Home from "@/pages/Home";
 import LayoutMain from "@/pages/Layout";
 import PagePhoto from "@/pages/Photo";
 import PageComponents from "@/pages/Components/page-components";
+import AlbumsPage from "@/pages/Albums";
+import AlbumPageDetails from "@/pages/Album";
 import { Toaster } from "sonner";
 
 const client = new QueryClient();
@@ -21,6 +23,8 @@ export default function App() {
               <Route index element={<Home />} />
               <Route path="/components" element={<PageComponents />} />
               <Route path="/fotos/:id" element={<PagePhoto />} />
+              <Route path="/albums" element={<AlbumsPage />} />
+              <Route path="/albums/:id" element={<AlbumPageDetails />} />
             </Route>
           </Routes>
         </BrowserRouter>

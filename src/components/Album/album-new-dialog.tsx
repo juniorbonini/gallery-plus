@@ -50,7 +50,12 @@ export default function AlbumNewDialog({ trigger }: AlbumNewDialog) {
 
   function handleSubmit(payload: AlbumNewFormSchema) {
     setIsCreatingAlbum(async () => {
-      createAlbum(payload);
+      const data: AlbumNewFormSchema = { title: payload.title };
+      if (payload.photosIds && payload.photosIds.length > 0) {
+        data.photosIds = payload.photosIds;
+      }
+
+      await createAlbum(data);
       setModalOpen(false);
     });
   }

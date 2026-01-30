@@ -20,3 +20,12 @@ export interface AlbumListSelector {
 export interface AlbumNewDialog {
   trigger: React.ReactNode;
 }
+
+export interface AlbumCard {
+  album: Album;
+  firstPhotoSrc?: string;
+  loading?: boolean;
+  onOpen?: (id: string) => void;
+  onRemove?: (id: string) => void;
+  removing?: boolean;
+}

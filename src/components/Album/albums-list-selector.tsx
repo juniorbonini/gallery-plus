@@ -1,8 +1,10 @@
-import type { AlbumListSelector } from "@/models/album";
-import Text from "../Text";
-import InputCheckbox from "../InputCheckbox";
-import { usePhotoAlbum } from "@/hooks/use-photo-albums";
 import React from "react";
+
+import Text from "@/components/Text";
+import InputCheckbox from "@/components/InputCheckbox";
+import type { AlbumListSelector } from "@/models/album";
+import { usePhotoAlbum } from "@/hooks/use-photo-albums";
+import Divider from "../Divider";
 
 export function AlbumListSelector({
   loading,
@@ -33,7 +35,7 @@ export function AlbumListSelector({
   }
 
   return (
-    <ul className="flex flec-col gap-4">
+    <ul className="flex flex-col gap-4">
       {!loading &&
         photo &&
         albums.length > 0 &&
@@ -49,6 +51,7 @@ export function AlbumListSelector({
                 disabled={isUpdatingPhoto}
               />
             </div>
+            {index !== albums.length - 1 && <Divider className="mt-4" />}
           </li>
         ))}
     </ul>

@@ -37,7 +37,20 @@ export default function useAlbum() {
     }
   }
 
+  async function removeAlbum(albumId: string) {
+    try {
+      await api.delete(`/albums/${albumId}`);
+
+      queryClient.invalidateQueries({ queryKey: ["albums"] });
+      toast.success("Album foi removido com sucesso");
+    } catch (error) {
+      toast.error("Erro ao remover album");
+      throw error;
+    }
+  }
+
   return {
     createAlbum,
+    removeAlbum,
   };
 }

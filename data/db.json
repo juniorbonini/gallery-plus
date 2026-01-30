@@ -1,42 +1,18 @@
 {
-  "photos": [
-    {
-      "id": "fc27a2d6-ea62-456d-8037-431cef758f96",
-      "title": "Gata",
-      "albumsIds": [],
-      "imageId": "655502c0-07a2-45a2-9878-7e9c0d6b19a8.png"
-    }
-  ],
+  "photos": [],
   "albums": [
     {
-      "id": "61a82a91-4f69-43b5-999e-3a0227b09fd8",
-      "title": "Gatos"
-    },
-    {
-      "id": "0725a72b-04a4-40a8-8373-5e2add32ce98",
-      "title": "Aleatórios"
-    },
-    {
-      "id": "0a8c1a6b-0490-4ea4-afd7-9f4d75bb53ba",
-      "title": "Natureza"
-    },
-    {
-      "id": "1979028c-b9dd-4bcf-958e-74aeed689794",
-      "title": "Viagens"
-    },
-    {
-      "id": "d740e226-9b2a-4288-adb4-ca8b34f97c9a",
+      "id": "2f531457-247b-44eb-8d75-8fc5cf069ea5",
       "title": "Fotografia"
     },
     {
-      "id": "878f8065-25bb-4782-b515-d2a3fed6c01b",
-      "title": "Gastronomia"
+      "id": "f678f4df-8908-404a-aeb4-7f6549886cb2",
+      "title": "Viagem"
+    },
+    {
+      "id": "e312f41e-2ade-4d08-af65-84e33a43da76",
+      "title": "album teste"
     }
   ],
-  "photosOnAlbums": [
-    {
-      "photoId": "fc27a2d6-ea62-456d-8037-431cef758f96",
-      "albumId": "61a82a91-4f69-43b5-999e-3a0227b09fd8"
-    }
-  ]
+  "photosOnAlbums": []
 }
