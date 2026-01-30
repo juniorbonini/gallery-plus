@@ -1,6 +1,22 @@
-import type { Album } from "@/models/album";
-import type { NewPhotoDialog } from "@/models/photo";
+import React from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import Text from "@/components/Text";
+import Alert from "@/components/Alert";
+import Button from "@/components/Button";
 import { useForm } from "react-hook-form";
+import Skeleton from "@/components/Skeleton";
+import { usePhoto } from "@/hooks/use-photo";
+import { useAlbums } from "@/hooks/use-albums";
+import InputText from "@/components/InputText";
+import type { PhotoNewDialog } from "@/models/photo";
+import InputSingleFile from "@/components/InputSingleFile";
+import ImageFilePreview from "@/components/ImageFilePreview";
+import { DialogClose, DialogTrigger } from "@radix-ui/react-dialog";
+import {
+  photoNewFormSchema,
+  type PhotoNewFormSchema,
+} from "@/schemas/Photo/photo.schema";
 import {
   Dialog,
   DialogBody,
@@ -8,34 +24,27 @@ import {
   DialogFooter,
   DialogHeader,
 } from "../Dialog";
-import { DialogClose, DialogTrigger } from "@radix-ui/react-dialog";
-import InputText from "../InputText";
-import Alert from "../Alert";
-import InputSingleFile from "../InputSingleFile";
-import ImageFilePreview from "../ImageFilePreview";
-import Text from "../Text";
-import Button from "../Button";
-import Skeleton from "../Skeleton";
-import { useAlbums } from "@/hooks/use-albums";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  photoNewFormSchema,
-  type PhotoNewFormSchema,
-} from "@/schemas/Photo/photo.schema";
-import React from "react";
-import { usePhoto } from "@/hooks/use-photo";
 
-export default function NewPhotoDialog({ trigger }: NewPhotoDialog) {
-  const [modalOpen, setModalOpen] = React.useState(false);
-  const { albums, isLoadingAlbum } = useAlbums();
-  const [isCreatingPhoto, setIsCreatingPhoto] = React.useTransition();
-  const { createPhoto } = usePhoto();
+export default function PhotoNewDialog({ trigger }: PhotoNewDialog) {
+   const [modalOpen, setModalOpen] = React.useState(false);
   const form = useForm<PhotoNewFormSchema>({
     resolver: zodResolver(photoNewFormSchema),
   });
+
+  const { albums, isLoadingAlbum } = useAlbums();
+  const { createPhoto } = usePhoto();
+  const [isCreatingPhoto, setIsCreatingPhoto] = React.useTransition();
+
   const file = form.watch("file");
   const fileSrc = file?.[0] ? URL.createObjectURL(file[0]) : undefined;
+
   const albumsIds = form.watch("albumsIds");
+
+  React.useEffect(() => {
+    if (!modalOpen) {
+      form.reset();
+    }
+  }, [modalOpen, form]);
 
   function handleSubmit(payload: PhotoNewFormSchema) {
     setIsCreatingPhoto(async () => {
@@ -57,21 +66,16 @@ export default function NewPhotoDialog({ trigger }: NewPhotoDialog) {
     form.setValue("albumsIds", Array.from(albumsSet));
   }
 
-  React.useEffect(() => {
-    if (!modalOpen) {
-      form.reset();
-    }
-  }, [modalOpen, form]);
-
   return (
     <Dialog open={modalOpen} onOpenChange={setModalOpen}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent>
         <form onSubmit={form.handleSubmit(handleSubmit)}>
           <DialogHeader>Adicionar foto</DialogHeader>
+
           <DialogBody className="flex flex-col gap-5">
             <InputText
-              placeholder="Adicione um titúlo"
+              placeholder="Adicione um título"
               maxLength={255}
               error={form.formState.errors.title?.message}
               {...form.register("title")}
@@ -80,19 +84,20 @@ export default function NewPhotoDialog({ trigger }: NewPhotoDialog) {
             <Alert>
               Tamanho máximo: 50MB
               <br />
-              Você pode selecionar arquivos em PNG, JPG, JPEG e WEBP
+              Você pode selecionar arquivo em PNG, JPG ou JPEG
             </Alert>
 
             <InputSingleFile
               form={form}
-              allowedExtensions={["png", "jpg", "jpeg", "webp"]}
+              allowedExtensions={["png", "jpg", "jpeg"]}
               maxFileInMb={50}
-              replaceBy={<ImageFilePreview className="w-full h-56" />}
+              replaceBy={<ImageFilePreview src={fileSrc} className="w-full h-56" />}
               error={form.formState.errors.file?.message}
               {...form.register("file")}
             />
-            <div className="flex flex-col space-y-3">
-              <Text variant="label-small">Selecionar álbums</Text>
+
+            <div className="space-y-3">
+              <Text variant="label-small">Selecionar álbuns</Text>
 
               <div className="flex flex-wrap gap-3">
                 {!isLoadingAlbum &&
@@ -100,11 +105,11 @@ export default function NewPhotoDialog({ trigger }: NewPhotoDialog) {
                   albums.map((album) => (
                     <Button
                       key={album.id}
-                      className="truncate"
                       variant={
                         albumsIds?.includes(album.id) ? "primary" : "ghost"
                       }
                       size="sm"
+                      className="truncate"
                       onClick={() => handleToggleAlbum(album.id)}
                     >
                       {album.title}
@@ -128,7 +133,11 @@ export default function NewPhotoDialog({ trigger }: NewPhotoDialog) {
                 Cancelar
               </Button>
             </DialogClose>
-            <Button disabled={isCreatingPhoto} handling={isCreatingPhoto} type="submit">
+            <Button
+              type="submit"
+              disabled={isCreatingPhoto}
+              handling={isCreatingPhoto}
+            >
               {isCreatingPhoto ? "Adicionando" : "Adicionar"}
             </Button>
           </DialogFooter>

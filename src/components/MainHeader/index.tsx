@@ -4,13 +4,13 @@ import { Link, useLocation } from "react-router";
 // @ts-expect-error: module declaration for SVG React import
 import Logo from "@/assets/images/galeria-plus-full-logo.svg?react";
 
-import Container from "@/components/Container";
-import Button from "@/components/Button";
-import type { MainHeaderInterface } from "@/models/main-header";
-import Divider from "@/components/Divider";
-import NewPhotoDialog from "@/components/Photo/new-photo.dialog";
 import Search from "@/components/Search";
-import NewAlbumDialog from "@/components/Album/new-album-dialog";
+import Button from "@/components/Button";
+import Divider from "@/components/Divider";
+import Container from "@/components/Container";
+import type { MainHeaderInterface } from "@/models/main-header";
+import AlbumNewDialog  from "@/components/Album/album-new-dialog";
+import PhotoNewDialog  from "@/components/Photo/photo-new-dialog";
 
 export default function MainHeader({
   className,
@@ -35,8 +35,8 @@ export default function MainHeader({
       )}
 
       <div className="flex items-center gap-3">
-        <NewPhotoDialog trigger={<Button>Nova foto</Button>} />
-        <NewAlbumDialog
+        <PhotoNewDialog trigger={<Button>Nova foto</Button>} />
+        <AlbumNewDialog
           trigger={<Button variant="secondary">Criar album</Button>}
         />
       </div>

@@ -1,23 +1,23 @@
 import cx from "classnames";
-import type { Album, AlbumFilter } from "@/models/album";
-import Text from "../Text";
-import Button from "../Button";
-import Skeleton from "../Skeleton";
-import { useAlbums } from "@/hooks/use-albums";
-import { usePhotos } from "@/hooks/use-photos";
 
-export default function AlbumFiltered({
+import Text from "@/components/Text";
+import Button from "@/components/Button";
+import Skeleton from "@/components/Skeleton";
+import { usePhotos } from "@/hooks/use-photos";
+import type { AlbumFilter } from "@/models/album";
+
+export default function AlbumsFilter({
+  albums,
   loading,
   className,
   ...props
 }: AlbumFilter) {
   const { filters } = usePhotos();
-  const { albums, isLoadingAlbum } = useAlbums();
   return (
-    <div className={cx("flex items-center gap-3.5 overflow-x-auto")} {...props}>
-      <Text variant="heading-small">Álbuns</Text>
+    <div className={cx(`flex items-center gap-3.5 overflow-x-auto`)} {...props}>
+      <Text variant="heading-medium">Álbuns</Text>
       <div className="flex gap-3">
-        {!isLoadingAlbum ? (
+        {!loading ? (
           <>
             <Button
               size="sm"
@@ -30,10 +30,9 @@ export default function AlbumFiltered({
             {albums.map((album) => (
               <Button
                 key={album.id}
-                variant={filters.albumId === album.id ? "primary" : "ghost"}
-                onClick={() => filters.setAlbumId(null)}
                 size="sm"
-                className="cursor-pointer"
+                variant={filters.albumId === album.id ? "primary" : "secondary"}
+                onClick={() => filters.setAlbumId(album.id)}
               >
                 {album.title}
               </Button>
@@ -41,7 +40,7 @@ export default function AlbumFiltered({
           </>
         ) : (
           Array.from({ length: 5 }).map((_, index) => (
-            <Skeleton key={`album-loading-${index}`} className="w-28 h-7" />
+            <Skeleton className="w-28 h-7" key={`album-loading-${index}`} />
           ))
         )}
       </div>

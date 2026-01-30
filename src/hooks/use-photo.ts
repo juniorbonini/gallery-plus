@@ -1,12 +1,15 @@
-import type { Photo, PhotoResponse } from "@/models/photo";
-import type { PhotoNewFormSchema } from "@/schemas/Photo/photo.schema";
-import { fetcher, api } from "@/utils/api";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
+import { useNavigate } from "react-router";
 
-
+import { fetcher, api } from "@/utils/api";
+import { usePhotoAlbum } from "./use-photo-albums";
+import type { Photo, PhotoResponse } from "@/models/photo";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import type { PhotoNewFormSchema } from "@/schemas/Photo/photo.schema";
 
 export function usePhoto(id?: string) {
+  const navigate = useNavigate();
+  const { managePhotoOnAlbum } = usePhotoAlbum();
   const { data, isLoading } = useQuery<PhotoResponse>({
     queryKey: ["photo", id],
     queryFn: () => fetcher(`/photos/${id}`),
@@ -34,23 +37,32 @@ export function usePhoto(id?: string) {
       );
 
       if (payload.albumsIds && payload.albumsIds.length > 0) {
-        await api.post(`/photos/${photo.id}/albums`, {
-          albumsIds: payload.albumsIds,
-        });
+        await managePhotoOnAlbum(photo.id, payload.albumsIds);
       }
 
-      queryClient.invalidateQueries({ queryKey: ["photos"] })
-      toast.success("Foto criada com sucesso")
+      queryClient.invalidateQueries({ queryKey: ["photos"] });
+      toast.success("Foto criada com sucesso");
     } catch (error) {
-      toast.error("Erro ao criar a foto")
+      toast.error("Erro ao criar a foto");
+    }
+  }
+
+  async function removePhoto(photoId: string) {
+    try {
+      await api.delete(`/photos/${photoId}`);
+      toast.success("Foto removida com sucesso");
+      navigate("/");
+    } catch (error) {
+      toast.error("Erro ao remover foto");
     }
   }
 
   return {
+    createPhoto,
+    removePhoto,
     photos: data,
     isLoadingPhoto: isLoading,
-    previousPhotoId: data?.previousPhotoId,
     nextPhotoId: data?.nextPhotoId,
-    createPhoto,
+    previousPhotoId: data?.previousPhotoId,
   };
 }

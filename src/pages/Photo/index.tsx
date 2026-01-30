@@ -1,22 +1,32 @@
+import React from "react";
+import { useParams } from "react-router";
+
 import Text from "@/components/Text";
-import Skeleton from "@/components/Skeleton";
-import Container from "@/components/Container";
-import PhotoNavigator from "@/components/Photo/photo-navigator";
-import ImageFilePreview from "@/components/ImageFilePreview";
 import Button from "@/components/Button";
-import AlbumListSelector from "@/components/Album/album-list-selector";
-import { useAlbums } from "@/hooks/use-albums";
 import type { Photo } from "@/models/photo";
 import { usePhoto } from "@/hooks/use-photo";
-import { useParams } from "react-router";
+import Skeleton from "@/components/Skeleton";
+import Container from "@/components/Container";
+import { useAlbums } from "@/hooks/use-albums";
+import ImageFilePreview from "@/components/ImageFilePreview";
+import PhotoNavigator from "@/components/Photo/photos-navigator";
+import { AlbumListSelector } from "@/components/Album/albums-list-selector";
 
 export default function PagePhoto() {
   const { id } = useParams();
   const { albums } = useAlbums();
-  const { photo, isLoadingPhoto, previousPhotoId, nextPhotoId } = usePhoto(id);
+  const { photos, isLoadingPhoto, previousPhotoId, nextPhotoId, removePhoto } =
+    usePhoto(id);
+  const [isDelitingPhoto, setIsDelitingPhoto] = React.useTransition();
 
-  if (!isLoadingPhoto && !photo) {
+  if (!isLoadingPhoto && !photos) {
     return <div>Nenhuma foto encontrada</div>;
+  }
+
+  function handleRemovePhoto() {
+    setIsDelitingPhoto(async () => {
+      await removePhoto(photos!.id);
+    });
   }
 
   return (
@@ -24,7 +34,7 @@ export default function PagePhoto() {
       <header className="flex items-center justify-between gap-8 mb-8">
         {!isLoadingPhoto ? (
           <Text as="h2" variant="heading-large">
-            {photo?.title}
+            {photos?.title}
           </Text>
         ) : (
           <Skeleton className="w-48 h-8" />
@@ -40,16 +50,22 @@ export default function PagePhoto() {
         <div className="space-y-3">
           {!isLoadingPhoto ? (
             <ImageFilePreview
-              src={`${import.meta.env.VITE_IMAGES_URL}/${photo?.imageId}`}
+              src={`${import.meta.env.VITE_IMAGES_URL}/${photos?.imageId}`}
               imageClassName="h-[21rem]"
-              title={photo?.title}
+              title={photos?.title}
             />
           ) : (
             <Skeleton className="h-[21rem]" />
           )}
 
           {!isLoadingPhoto ? (
-            <Button variant="destructive">Excluir</Button>
+            <Button
+              disabled={isDelitingPhoto}
+              variant="destructive"
+              onClick={() => handleRemovePhoto()}
+            >
+              {isDelitingPhoto ? "Excluindo" : "Excluir"}
+            </Button>
           ) : (
             <Skeleton className=" w-20 h-10" />
           )}
@@ -59,7 +75,7 @@ export default function PagePhoto() {
             Álbuns
           </Text>
           <AlbumListSelector
-            photo={photo as Photo}
+            photo={photos as Photo}
             albums={albums}
             loading={isLoadingPhoto}
           />

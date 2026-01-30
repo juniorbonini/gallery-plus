@@ -1,34 +1,10 @@
 {
   "photos": [
     {
-      "id": "ea0ff5b6-3596-4e92-9c2e-bf5d438692c1",
-      "title": "Luna e Lua",
+      "id": "fc27a2d6-ea62-456d-8037-431cef758f96",
+      "title": "Gata",
       "albumsIds": [],
-      "imageId": "462b2278-d9a4-4d89-b9c0-7f7f88d363c3.png"
-    },
-    {
-      "id": "c4a57784-223e-4a8e-a145-f14e5950b17b",
-      "title": "Academia",
-      "albumsIds": [],
-      "imageId": "291aad26-a8d2-411c-84b7-9c819492f263.jpeg"
-    },
-    {
-      "id": "fb3c5ba5-2fea-457d-83d4-83fe79c7446d",
-      "title": "Foto teste",
-      "albumsIds": [],
-      "imageId": "e2affc61-bbc7-4862-9ae6-d813fa2ccc8b.png"
-    },
-    {
-      "id": "72700846-2716-4fcd-a462-3a20ada79287",
-      "title": "Gatas",
-      "albumsIds": [],
-      "imageId": "e0fc47b4-b285-4743-91d1-8bd97a785df1.png"
-    },
-    {
-      "id": "921f59ae-c7c6-41b5-b63f-c5739f01412c",
-      "title": "Minhas jóias <3",
-      "albumsIds": [],
-      "imageId": "c3910da6-5816-4a81-8b28-2f65c471e8a1.png"
+      "imageId": "655502c0-07a2-45a2-9878-7e9c0d6b19a8.png"
     }
   ],
   "albums": [
@@ -39,15 +15,27 @@
     {
       "id": "0725a72b-04a4-40a8-8373-5e2add32ce98",
       "title": "Aleatórios"
+    },
+    {
+      "id": "0a8c1a6b-0490-4ea4-afd7-9f4d75bb53ba",
+      "title": "Natureza"
+    },
+    {
+      "id": "1979028c-b9dd-4bcf-958e-74aeed689794",
+      "title": "Viagens"
+    },
+    {
+      "id": "d740e226-9b2a-4288-adb4-ca8b34f97c9a",
+      "title": "Fotografia"
+    },
+    {
+      "id": "878f8065-25bb-4782-b515-d2a3fed6c01b",
+      "title": "Gastronomia"
     }
   ],
   "photosOnAlbums": [
     {
-      "photoId": "ea0ff5b6-3596-4e92-9c2e-bf5d438692c1",
-      "albumId": "61a82a91-4f69-43b5-999e-3a0227b09fd8"
-    },
-    {
-      "photoId": "c4a57784-223e-4a8e-a145-f14e5950b17b",
+      "photoId": "fc27a2d6-ea62-456d-8037-431cef758f96",
       "albumId": "61a82a91-4f69-43b5-999e-3a0227b09fd8"
     }
   ]

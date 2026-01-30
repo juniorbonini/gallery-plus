@@ -12,7 +12,7 @@ export const photoImageSelectVariants = tv({
   },
 });
 
-export interface PhotoImageSelect extends React.ComponentProps<
+export interface PhotoImageSelectable extends React.ComponentProps<
   typeof ImageFilePreview
 > {
   selected?: boolean;
@@ -37,7 +37,7 @@ export interface PhotosNavigator extends React.ComponentProps<"div"> {
   loading?: boolean;
 }
 
-export interface NewPhotoDialog {
+export interface PhotoNewDialog {
   trigger: React.ReactNode;
 }
 

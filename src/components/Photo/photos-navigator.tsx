@@ -1,8 +1,9 @@
 import cx from "classnames";
 import { useNavigate } from "react-router";
 
-import Button from "../Button";
-import ButtonIcon from "../ButtonIcon";
+import Button from "@/components/Button";
+import Skeleton from "@/components/Skeleton";
+import ButtonIcon from "@/components/ButtonIcon";
 import type { PhotosNavigator } from "@/models/photo";
 
 // @ts-expect-error: module declaration for SVG React import
@@ -10,7 +11,6 @@ import ArrowLeftIcon from "@/assets/icons/chevron-left.svg?react";
 
 // @ts-expect-error: module declaration for SVG React import
 import ArrowRightIcon from "@/assets/icons/chevron-right.svg?react";
-import Skeleton from "../Skeleton";
 
 export default function PhotoNavigator({
   previousPhotoId,
@@ -21,7 +21,7 @@ export default function PhotoNavigator({
 }: PhotosNavigator) {
   const navigate = useNavigate();
   return (
-    <div className={cx("flex gap-2")} {...props}>
+    <div className={cx("flex gap-2", className)} {...props}>
       {!loading ? (
         <>
           <ButtonIcon
@@ -36,7 +36,9 @@ export default function PhotoNavigator({
             icon={ArrowRightIcon}
             variant="secondary"
             disabled={!nextPhotoId}
-            onClick={() => navigate(`/fotos/${nextPhotoId}`)}
+            onClick={() => {
+              navigate(`/fotos/${nextPhotoId}`);
+            }}
           >
             Próxima imagem
           </Button>
@@ -44,7 +46,7 @@ export default function PhotoNavigator({
       ) : (
         <>
           <Skeleton className="w-10 h-10" />
-          <Skeleton className="w-10 h-10" />
+          <Skeleton className="w-20 h-10" />
         </>
       )}
     </div>

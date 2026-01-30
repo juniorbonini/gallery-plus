@@ -1,4 +1,4 @@
-import AlbumFiltered from "@/components/Album/album-filtered";
+import AlbumFiltered from "@/components/Album/albums-filter";
 import Container from "@/components/Container";
 import List from "@/components/List";
 import { useAlbums } from "@/hooks/use-albums";
