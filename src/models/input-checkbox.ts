@@ -9,7 +9,7 @@ export const inputCheckboxVariants = tv({
   base: `appearance-none peer flex items-center justify-center cursor-pointer transition overflow-hidden`,
   variants: {
     variant: {
-      default: `border-1 border-solid border-accent-span hover:border-border-active checked:bg-accent-brand group-hover:checked:border-accent-brand-light group-hover:checked:bg-accent-brand-light`,
+      default: `border-1 border-solid border-accent-span hover:border-border-active checked:bg-accent-brand group-hover:checked:border-accent-brand-light group-hover:checked:bg-accent-brand`,
     },
     size: {
       sm: "w-3 h-3 roudned-sm",

@@ -5,7 +5,7 @@ export const cardVariants = tv({
   base: `rounded transition`,
   variants: {
     variant: {
-      default: "border boder-solid border-border-primary bg-transparent",
+      default: "border border-solid border-border-primary bg-transparent",
       primary: "bg-background-primary",
     },
     size: {
