@@ -27,17 +27,14 @@ import {
 
 export default function PhotoNewDialog({ trigger }: PhotoNewDialog) {
    const [modalOpen, setModalOpen] = React.useState(false);
-  const form = useForm<PhotoNewFormSchema>({
+   const form = useForm<PhotoNewFormSchema>({
     resolver: zodResolver(photoNewFormSchema),
   });
-
   const { albums, isLoadingAlbum } = useAlbums();
   const { createPhoto } = usePhoto();
   const [isCreatingPhoto, setIsCreatingPhoto] = React.useTransition();
-
   const file = form.watch("file");
   const fileSrc = file?.[0] ? URL.createObjectURL(file[0]) : undefined;
-
   const albumsIds = form.watch("albumsIds");
 
   React.useEffect(() => {
@@ -70,9 +67,8 @@ export default function PhotoNewDialog({ trigger }: PhotoNewDialog) {
     <Dialog open={modalOpen} onOpenChange={setModalOpen}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent>
-        <form onSubmit={form.handleSubmit(handleSubmit)}>
           <DialogHeader>Adicionar foto</DialogHeader>
-
+        <form onSubmit={form.handleSubmit(handleSubmit)}>
           <DialogBody className="flex flex-col gap-5">
             <InputText
               placeholder="Adicione um título"

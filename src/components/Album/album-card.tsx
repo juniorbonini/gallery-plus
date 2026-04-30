@@ -18,20 +18,18 @@ export default function AlbumCard({
   return (
     <div className="p-4 border border-accent-span rounded-lg flex flex-col justify-between">
       <div className="mb-4">
-        <div className="mb-3 items-center justify-center flex">
+        <div className="mb-4 items-center justify-center flex">
           {!loading ? (
             firstPhotoSrc ? (
               <ImageFilePreview
                 src={firstPhotoSrc}
-                imageClassName="h-40 w-full object-cover rounded"
+                imageClassName="h-50 w-70 object-cover rounded"
               />
             ) : (
               <IllustrationIcon />
             )
           ) : (
-            <div className="h-40 w-full flex items-center justify-center bg-accent-bg rounded">
-              <Text>foto 0</Text>
-            </div>
+              <Skeleton className="h-40 w-full" />
           )}
         </div>
 

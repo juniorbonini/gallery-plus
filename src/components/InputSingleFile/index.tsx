@@ -78,12 +78,16 @@ export default function InputSingleFile({
                 Tipo de arquivo inválido
               </Text>
             )}
+            {error && (
+              <Text variant="label-small" className="text-accent-red">
+               {error}
+              </Text>
+            )}
             {formFile && !isValidSize() && (
               <Text variant="label-small" className="text-accent-red">
                 O tamanho do arquivo ultrapassa o máximo
               </Text>
             )}
-
             {error && (
               <Text variant="label-small" className="text-accent-red">
                {error}

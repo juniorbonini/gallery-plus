@@ -6,7 +6,7 @@ import ButtonIcon from "@/components/ButtonIcon";
 import Divider from "@/components/Divider";
 import Text from "@/components/Text";
 // @ts-expect-error: module declaration for SVG React import
-import Xicon from "@/assets/icons/x.svg?react"
+import Xicon from "@/assets/icons/x.svg?react";
 
 export const Dialog = DialogPrimivite.Root;
 
@@ -29,7 +29,7 @@ export function DialogOverlay({
       data-[state=closed]:animate-out
       data-[state=closed]:fade-out-0
     `,
-        className
+        className,
       )}
       {...props}
     />
@@ -58,7 +58,7 @@ export function DialogContent({
         data-[state=closed]:fade-out-0
         data-[state=closed]:slide-out-to-bottom-[48%]
         `,
-          className
+          className,
         )}
         {...props}
       >
@@ -82,7 +82,7 @@ export function DialogHeader({
           `
           flex items-center justify-between
         `,
-          className
+          className,
         )}
         {...props}
       >
