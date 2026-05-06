@@ -1,71 +1,88 @@
-📸 Gallery Plus — Frontend
+# 📸 Gallery Plus — Frontend
+
 Aplicação web para gerenciamento de imagens com sistema de álbuns, permitindo o relacionamento muitos-para-muitos entre fotos e álbuns.
-O projeto foi desenvolvido com foco em arquitetura front-end, organização de domínio, validações robustas e experiência do usuário — construído além do escopo original do curso, com funcionalidades planejadas e implementadas de forma independente.
-🔗 Ver demo ao vivo
 
-🚀 Funcionalidades
-📷 Upload de imagens
+O projeto foi desenvolvido com foco em **arquitetura front-end**, **organização de domínio**, **validações robustas** e **experiência do usuário** — construído além do escopo original do curso, com funcionalidades planejadas e implementadas de forma independente.
 
-Upload de novas fotos através de modal personalizado
-Título opcional da imagem
-Seleção obrigatória de pelo menos um álbum
-Possibilidade de cancelar o upload
+🔗 **[Ver demo ao vivo](https://gallery-plus-liart.vercel.app)**
 
-🖼️ Detalhes da imagem
+---
 
-Visualização das informações da foto
-Exibição dos álbuns aos quais a imagem pertence
-Navegação entre fotos dentro de um álbum
+## 🚀 Funcionalidades
 
-🗂️ Gerenciamento de álbuns
+### 📷 Upload de imagens
 
-Criação de novos álbuns via modal
-Título do álbum obrigatório
-Seleção de imagens no momento da criação
-Listagem de álbuns com suas fotos
-Estado vazio quando não há fotos disponíveis
+- Upload de novas fotos através de modal personalizado
+- Título opcional da imagem
+- Seleção obrigatória de pelo menos um álbum
+- Possibilidade de cancelar o upload
 
-🔗 Relacionamento N:N
+### 🖼️ Detalhes da imagem
 
-Uma foto pode pertencer a múltiplos álbuns
-Um álbum pode conter múltiplas fotos
+- Visualização das informações da foto
+- Exibição dos álbuns aos quais a imagem pertence
+- Navegação entre fotos dentro de um álbum
 
+### 🗂️ Gerenciamento de álbuns
 
-💡 A funcionalidade de listagem e navegação entre álbuns foi idealizada e implementada de forma independente — não fazia parte do escopo original do curso. Ela exigiu a criação de novas telas, novos métodos no Context API e novas chamadas à API.
+- Criação de novos álbuns via modal
+- Título do álbum obrigatório
+- Seleção de imagens no momento da criação
+- Listagem de álbuns com suas fotos
+- Estado vazio quando não há fotos disponíveis
 
+### 🔗 Relacionamento N:N
 
-🧠 Conceitos aplicados
+- Uma foto pode pertencer a múltiplos álbuns
+- Um álbum pode conter múltiplas fotos
 
-Atomic Design
-Design Tokens
-Separação de domínio
-Relacionamento muitos-para-muitos (N:N)
-Validação de dados com Zod
-Hooks customizados
-Context API para gerenciamento de estado
-Integração Front-end ↔ Back-end
-Componentização e reutilização
-Estados vazios e feedback de UX
+> 💡 A funcionalidade de listagem e navegação entre álbuns foi idealizada e implementada de forma independente — não fazia parte do escopo original do curso. Ela exigiu a criação de novas telas, novos métodos no Context API e novas chamadas à API.
 
+---
 
-🧱 Tecnologias
+## 🧠 Conceitos aplicados
 
-React
-TypeScript
-Vite
-Zod
-Axios
+- Atomic Design
+- Design Tokens
+- Separação de domínio
+- Relacionamento muitos-para-muitos (N:N)
+- Validação de dados com Zod
+- Hooks customizados
+- Context API para gerenciamento de estado
+- Integração Front-end ↔ Back-end
+- Componentização e reutilização
+- Estados vazios e feedback de UX
 
+---
 
-▶️ Como executar
-bash# Instalar dependências
+## 🧱 Tecnologias
+
+- React
+- TypeScript
+- Vite
+- Zod
+- Axios
+
+---
+
+## ▶️ Como executar
+
+```bash
+# Instalar dependências
 yarn
 
 # Rodar o projeto
 yarn dev
+```
 
-📌 Observações
+---
+
+## 📌 Observações
+
 Este projeto foi desenvolvido com o objetivo de aprofundar conceitos de arquitetura front-end, indo além da simples implementação visual — priorizando organização, legibilidade e escalabilidade do código. Parte das funcionalidades foram adicionadas por iniciativa própria, sem instrução do curso.
 
-👨‍💻 Autor
-Junior Bonini — Front-end Developer
+---
+
+## 👨‍💻 Autor
+
+**Junior Bonini** — Front-end Developer
